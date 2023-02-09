@@ -8,10 +8,20 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     register: builder.mutation({
       query: (payload) => ({
-        url: '/user/register',
+        url: '/user/create',
         method: 'POST',
         body: payload
-      })
+      }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled
+          const { token, user } = data
+          dispatch(login(user))
+          localStorage.setItem('token', token)
+        } catch (error) {
+          console.log(error)
+        }
+      }
     }),
     login: builder.mutation({
       query: (payload) => ({
