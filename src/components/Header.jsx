@@ -7,6 +7,7 @@ export const Header = () => {
   const { name } = useUser()
   const dispatch = useDispatch()
   const handleLogout = () => {
+    localStorage.removeItem('token')
     dispatch(logout())
   }
 
