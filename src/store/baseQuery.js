@@ -3,7 +3,9 @@ import { SETTINGS } from '../config/settings'
 
 export const customBaseQuery = fetchBaseQuery({
   baseUrl: SETTINGS.API,
-  headers: {
-    Authorization: 'Bearer ' + localStorage.getItem('token')
+  prepareHeaders: (headers) => {
+    headers.set('Content-type', 'application/json')
+    headers.set('authorization', 'Bearer ' + localStorage.getItem('token'))
+    return headers
   }
 })
