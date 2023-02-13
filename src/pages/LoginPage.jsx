@@ -6,8 +6,8 @@ import { useLoginMutation } from '../store/api/authApi'
 import { Spinner } from '../views/Spinner'
 
 const initialValues = {
-  email: 'orealy@gmail.com',
-  password: '123456'
+  email: '',
+  password: ''
 }
 const validationSchema = Yup.object().shape({
   email: Yup.string()
