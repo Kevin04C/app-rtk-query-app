@@ -3,11 +3,13 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query'
 import { authApi } from './api/authApi'
 import { projectApi } from './api/projectApi'
 import { taksApi } from './api/taskApi'
+import { appSlice } from './app/appSlice'
 import { authSlice } from './auth/authSlice'
 
 export const store = configureStore({
   reducer: {
     auth: authSlice.reducer,
+    app: appSlice.reducer,
     [authApi.reducerPath]: authApi.reducer,
     [projectApi.reducerPath]: projectApi.reducer,
     [taksApi.reducerPath]: taksApi.reducer
